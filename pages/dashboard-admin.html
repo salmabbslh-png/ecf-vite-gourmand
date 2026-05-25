@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Admin - Saveurs de Bordeaux</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="../index.html">Saveurs de Bordeaux</a>
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="#">Dashboard</a></li>
+          <li class="nav-item"><a class="nav-link" href="gestion-employes.html">Employés</a></li>
+          <li class="nav-item"><a class="nav-link" href="gestion-menus.html">Menus/Plats</a></li>
+          <li class="nav-item"><a class="nav-link" href="dashboard-employe.html">Commandes</a></li>
+          <li class="nav-item"><a class="nav-link text-warning" href="connexion.html">Se déconnecter</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container my-4 flex-grow-1">
+    <h2 class="mb-4">Dashboard Administrateur</h2>
+
+    <!-- STATS -->
+    <div class="row mb-4">
+      <div class="col-md-3">
+        <div class="card text-center p-3 bg-dark text-white">
+          <h3>24</h3>
+          <p class="mb-0">Commandes totales</p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card text-center p-3 bg-warning">
+          <h3>5</h3>
+          <p class="mb-0">En attente</p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card text-center p-3 bg-success text-white">
+          <h3>12 450€</h3>
+          <p class="mb-0">Chiffre d'affaires</p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card text-center p-3 bg-info text-white">
+          <h3>3</h3>
+          <p class="mb-0">Employés actifs</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- GRAPHIQUE -->
+    <div class="card p-4 mb-4">
+      <h4 class="mb-3">Commandes par menu</h4>
+      <canvas id="graphiqueMenus" height="100"></canvas>
+    </div>
+
+    <!-- CHIFFRE D'AFFAIRES -->
+    <div class="card p-4">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h4>Chiffre d'affaires</h4>
+        <div>
+          <select class="form-select form-select-sm d-inline w-auto me-2">
+            <option>Tous les menus</option>
+            <option>Menu Noël</option>
+            <option>Menu Classique</option>
+            <option>Menu Végétarien</option>
+            <option>Menu Mariage</option>
+          </select>
+          <input type="month" class="form-control form-control-sm d-inline w-auto">
+        </div>
+      </div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Menu</th>
+            <th>Commandes</th>
+            <th>Chiffre d'affaires</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Menu Noël</td>
+            <td>8</td>
+            <td>14 400€</td>
+          </tr>
+          <tr>
+            <td>Menu Classique</td>
+            <td>10</td>
+            <td>6 400€</td>
+          </tr>
+          <tr>
+            <td>Menu Végétarien</td>
+            <td>4</td>
+            <td>1 560€</td>
+          </tr>
+          <tr>
+            <td>Menu Mariage</td>
+            <td>2</td>
+            <td>4 800€</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <footer class="bg-dark text-white text-center py-3 mt-auto">
+    <p class="mb-0">© 2026 Saveurs de Bordeaux | Lundi - Dimanche</p>
+    <a href="mentions-legales.html" class="text-warning">Mentions légales</a> |
+    <a href="cgv.html" class="text-warning">CGV</a>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const ctx = document.getElementById('graphiqueMenus').getContext('2d');
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Menu Noël', 'Menu Classique', 'Menu Végétarien', 'Menu Mariage'],
+        datasets: [{
+          label: 'Nombre de commandes',
+          data: [8, 10, 4, 2],
+          backgroundColor: ['#1a1a2e', '#f5a623', '#28a745', '#17a2b8']
+        }]
+      }
+    });
+  </script>
+</body>
+</html>

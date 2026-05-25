@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Suivi de commande - Saveurs de Bordeaux</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="../index.html">Saveurs de Bordeaux</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="dashboard-utilisateur.html">Mes commandes</a></li>
+          <li class="nav-item"><a class="nav-link" href="modifier-profil.html">Mon profil</a></li>
+          <li class="nav-item"><a class="nav-link text-warning" href="connexion.html">Se déconnecter</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container my-4 flex-grow-1">
+    <a href="dashboard-utilisateur.html" class="btn btn-outline-dark mb-4">← Retour à mes commandes</a>
+    <h2 class="mb-4">Suivi de commande — Menu Noël</h2>
+
+    <!-- INFOS COMMANDE -->
+    <div class="card p-4 mb-4">
+      <div class="row">
+        <div class="col-md-6">
+          <p><strong>Menu :</strong> Menu Noël</p>
+          <p><strong>Date de prestation :</strong> 24 décembre 2026</p>
+          <p><strong>Personnes :</strong> 12</p>
+        </div>
+        <div class="col-md-6">
+          <p><strong>Adresse :</strong> 12 Rue de la Paix, Bordeaux</p>
+          <p><strong>Total :</strong> 1805€</p>
+          <p><strong>Statut actuel :</strong> <span class="badge bg-success">En préparation</span></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TIMELINE SUIVI -->
+    <div class="card p-4">
+      <h4 class="mb-4">Historique</h4>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item d-flex justify-content-between">
+          <span>✅ Commande reçue</span>
+          <span class="text-muted">01/12/2026 - 10h00</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between">
+          <span>✅ Commande acceptée</span>
+          <span class="text-muted">01/12/2026 - 14h00</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between">
+          <span>✅ En préparation</span>
+          <span class="text-muted">23/12/2026 - 08h00</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between text-muted">
+          <span>⏳ En cours de livraison</span>
+          <span>-</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between text-muted">
+          <span>⏳ Livré</span>
+          <span>-</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between text-muted">
+          <span>⏳ Terminé</span>
+          <span>-</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <footer class="bg-dark text-white text-center py-3 mt-auto">
+    <p class="mb-0">© 2026 Saveurs de Bordeaux | Lundi - Dimanche</p>
+    <a href="mentions-legales.html" class="text-warning">Mentions légales</a> |
+    <a href="cgv.html" class="text-warning">CGV</a>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
