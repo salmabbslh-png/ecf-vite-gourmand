@@ -34,7 +34,9 @@ try {
     $mail->setFrom('noreply@saveurs-bordeaux.fr', 'Saveurs de Bordeaux');
     $mail->addAddress($email);
     $mail->Subject = 'Réinitialisation de votre mot de passe';
-    $mail->Body = "Cliquez sur ce lien : http://localhost:8888/pages/reset-password.php?token=" . $token;
+    $domaine = $_SERVER['HTTP_HOST'];
+    $lien = "http://" . $domaine . "/pages/reset-password.php?token=" . $token;
+    $mail->Body = "Cliquez sur ce lien pour réinitialiser votre mot de passe : " . $lien;
     $mail->send();
     echo "Email envoyé ! Vérifiez votre boîte Mailtrap.";
 } catch (Exception $e) {

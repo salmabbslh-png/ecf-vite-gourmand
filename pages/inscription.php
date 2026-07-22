@@ -32,7 +32,7 @@
       <div class="col-md-6">
         <div class="card p-4">
           <h2 class="text-center mb-4">Créer un compte</h2>
-          <form action="http://localhost:8888/php/inscription.php" method="POST">
+          <form action="../php/inscription.php" method="POST">
             <div class="row">
               <div class="col-md-6 mb-3">
                 <label class="form-label">Nom</label>
