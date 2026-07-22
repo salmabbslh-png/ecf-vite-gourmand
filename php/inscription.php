@@ -36,6 +36,6 @@ $stmt = $pdo->prepare("INSERT INTO utilisateur (email, password, nom, prenom, te
 $stmt->execute([$email, $password_hache, $nom, $prenom, $telephone, $adresse]);
 
 // Redirection vers la page de connexion
-header("Location: ../pages/connexion.html");
+header("Location: ../pages/connexion.php");
 exit;
 ?>
