@@ -40,5 +40,5 @@ if ($stmt->fetchColumn() > 0) {
 $stmt = $pdo->prepare("INSERT INTO avis (note, description, statut, utilisateur_id, commande_id) VALUES (?, ?, 'en attente', ?, ?)");
 $stmt->execute([$note, $description, $utilisateur_id, $commande_id]);
 
-header("Location: ../pages/dashboard-utilisateur.html?avis=success");
+header("Location: ../pages/dashboard-utilisateur.php?avis=success");
 exit;

@@ -62,8 +62,8 @@ $total = $commande['prix_menu'] + $commande['prix_livraison'];
   <div class="container">
     <span class="navbar-brand">Saveurs de Bordeaux</span>
     <div>
-      <a href="dashboard-utilisateur.html" class="text-white me-3">Mes commandes</a>
-      <a href="modifier-profil.html" class="text-white me-3">Mon profil</a>
+      <a href="dashboard-utilisateur.php" class="text-white me-3">Mes commandes</a>
+      <a href="modifier-profil.php" class="text-white me-3">Mon profil</a>
       <a href="../php/deconnexion.php" class="text-warning">Se déconnecter</a>
     </div>
   </div>
@@ -71,7 +71,7 @@ $total = $commande['prix_menu'] + $commande['prix_livraison'];
 
 <div class="container my-5 flex-grow-1">
 
-  <a href="dashboard-utilisateur.html" class="btn btn-outline-dark mb-4">← Retour à mes commandes</a>
+  <a href="dashboard-utilisateur.php" class="btn btn-outline-dark mb-4">← Retour à mes commandes</a>
 
   <h1 class="mb-4">Suivi de commande — <?= htmlspecialchars($commande['nom_menu']) ?></h1>
 

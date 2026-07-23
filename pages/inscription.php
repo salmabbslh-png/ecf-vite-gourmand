@@ -67,7 +67,7 @@
             <button type="submit" class="btn btn-dark w-100">Créer mon compte</button>
           </form> 
           <hr>
-          <p class="text-center mt-2">Déjà un compte ? <a href="connexion.html">Se connecter</a></p>
+          <p class="text-center mt-2">Déjà un compte ? <a href="connexion.php">Se connecter</a></p>
         </div>
       </div>
     </div>

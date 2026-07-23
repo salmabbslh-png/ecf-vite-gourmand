@@ -119,7 +119,7 @@ try {
         'nombre_personne' => $nombre_personne,
         'date_commande' => date('Y-m-d')
     ]);
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // Si MongoDB échoue, on ne bloque pas la commande (déjà enregistrée dans MySQL)
     error_log("Erreur MongoDB : " . $e->getMessage());
 }
