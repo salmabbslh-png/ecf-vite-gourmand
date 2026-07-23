@@ -11,15 +11,15 @@
   <!-- NAVBAR -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-      <a class="navbar-brand" href="../index.html">Saveurs de Bordeaux</a>
+      <a class="navbar-brand" href="index.php">Saveurs de Bordeaux</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navMenu">
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="../index.html">Accueil</a></li>
-          <li class="nav-item"><a class="nav-link" href="menus.html">Nos Menus</a></li>
-          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.php">Accueil</a></li>
+          <li class="nav-item"><a class="nav-link" href="menus.php">Nos Menus</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.php">Contact</a></li>
           <li class="nav-item"><a class="nav-link active" href="#">Inscription</a></li>
         </ul>
       </div>
