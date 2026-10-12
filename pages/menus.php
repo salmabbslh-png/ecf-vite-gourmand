@@ -1,6 +1,7 @@
 <?php
 require_once '../php/config.php';
-$menus = $pdo->query("SELECT * FROM menu ORDER BY menu_id ASC")->fetchAll(PDO::FETCH_ASSOC);
+$menus = $pdo->query("SELECT menu.*, theme.libelle AS theme FROM menu LEFT JOIN theme ON menu.theme_id = theme.theme_id ORDER BY menu.menu_id ASC")->fetchAll(PDO::FETCH_ASSOC);
+$themes = $pdo->query("SELECT * FROM theme ORDER BY libelle")->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -42,6 +43,15 @@ $menus = $pdo->query("SELECT * FROM menu ORDER BY menu_id ASC")->fetchAll(PDO::F
         </select>
       </div>
       <div class="col-md-3">
+  <label class="form-label">Thème</label>
+  <select id="filtreTheme" class="form-select">
+    <option value="">Tous</option>
+    <?php foreach ($themes as $theme): ?>
+      <option value="<?= htmlspecialchars($theme['libelle']) ?>"><?= htmlspecialchars($theme['libelle']) ?></option>
+    <?php endforeach; ?>
+  </select>
+  </div>
+      <div class="col-md-3">
         <label class="form-label">Nombre de personnes min.</label>
         <input type="number" id="filtrePersonnes" class="form-control" placeholder="Ex: 10">
       </div>
@@ -53,6 +63,7 @@ $menus = $pdo->query("SELECT * FROM menu ORDER BY menu_id ASC")->fetchAll(PDO::F
       <div class="col-md-4 mb-4 carte-menu"
            data-prix="<?= $menu['prix_par_personne'] ?>"
            data-regime="<?= htmlspecialchars($menu['regime']) ?>"
+           data-theme="<?= htmlspecialchars($menu['theme'] ?? '') ?>"
            data-personnes="<?= $menu['nombre_personne_minimum'] ?>">
         <div class="card h-100 p-3">
           <?php if (!empty($menu['image'])): ?>
@@ -74,6 +85,7 @@ const cartes = document.querySelectorAll('.carte-menu');
 const filtrePrixMax = document.getElementById('filtrePrixMax');
 const filtrePrixMin = document.getElementById('filtrePrixMin');
 const filtreRegime = document.getElementById('filtreRegime');
+const filtreTheme = document.getElementById('filtreTheme');
 const filtrePersonnes = document.getElementById('filtrePersonnes');
 const aucunResultat = document.getElementById('aucunResultat');
 
@@ -81,17 +93,20 @@ function appliquerFiltres() {
   const prixMax = parseFloat(filtrePrixMax.value) || Infinity;
   const prixMin = parseFloat(filtrePrixMin.value) || 0;
   const regime = filtreRegime.value;
+  const theme = filtreTheme.value;
   const personnes = parseInt(filtrePersonnes.value) || 0;
   let nbVisibles = 0;
   cartes.forEach(carte => {
     const prix = parseFloat(carte.dataset.prix);
     const regimeCarte = carte.dataset.regime;
+    const themeCarte = carte.dataset.theme;
     const personnesCarte = parseInt(carte.dataset.personnes);
     const okPrixMax = prix <= prixMax;
     const okPrixMin = prix >= prixMin;
     const okRegime = (regime === '') || (regimeCarte === regime);
+    const okTheme = (theme === '') || (themeCarte === theme);
     const okPersonnes = personnesCarte >= personnes;
-    if (okPrixMax && okPrixMin && okRegime && okPersonnes) {
+    if (okPrixMax && okPrixMin && okRegime && okTheme && okPersonnes) {
       carte.style.display = '';
       nbVisibles++;
     } else {
@@ -103,11 +118,13 @@ function appliquerFiltres() {
 filtrePrixMax.addEventListener('input', appliquerFiltres);
 filtrePrixMin.addEventListener('input', appliquerFiltres);
 filtreRegime.addEventListener('change', appliquerFiltres);
+filtreTheme.addEventListener('change', appliquerFiltres);
 filtrePersonnes.addEventListener('input', appliquerFiltres);
 document.getElementById('resetFiltres').addEventListener('click', () => {
   filtrePrixMax.value = '';
   filtrePrixMin.value = '';
   filtreRegime.value = '';
+  filtreTheme.value = '';
   filtrePersonnes.value = '';
   appliquerFiltres();
 });
