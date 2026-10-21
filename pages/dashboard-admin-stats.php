@@ -43,7 +43,7 @@ try {
     <span class="navbar-brand">Saveurs de Bordeaux — Espace admin</span>
     <div>
       <a class="nav-link d-inline text-white me-3" href="dashboard-admin-stats.php">Statistiques</a>
-      <a class="nav-link d-inline text-white me-3" href="gestion-employes.php">Employes</a>
+      <a class="nav-link d-inline text-white me-3" href="gestion-employes.php">Employés</a>
       <a class="nav-link d-inline text-white me-3" href="gestion-commandes.php">Commandes</a>
       <a class="nav-link d-inline text-white me-3" href="gestion-menus.php">Menus</a>
       <a class="nav-link d-inline text-white me-3" href="gestion-plats.php">Plats</a>

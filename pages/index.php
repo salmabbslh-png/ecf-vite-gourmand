@@ -1,14 +1,6 @@
 <?php
 require_once '../php/config.php';
 
-// Récupérer les avis validés pour la page d'accueil
-$avis_valides = $pdo->query("
-    SELECT avis.note, avis.description, utilisateur.prenom
-    FROM avis
-    JOIN utilisateur ON avis.utilisateur_id = utilisateur.utilisateur_id
-    WHERE avis.statut = 'validé'
-    ORDER BY avis.avis_id DESC
-")->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -72,20 +64,7 @@ $avis_valides = $pdo->query("
   <!-- AVIS CLIENTS -->
   <section class="container my-5">
     <h2 class="text-center mb-4">Avis clients</h2>
-    <div class="row">
-      <?php if (empty($avis_valides)): ?>
-        <p class="text-center text-muted">Aucun avis pour le moment.</p>
-      <?php else: ?>
-        <?php foreach ($avis_valides as $avis): ?>
-          <div class="col-md-4 mb-3">
-            <div class="card p-3 h-100">
-              <p>"<?= htmlspecialchars($avis['description']) ?>"</p>
-              <strong>— <?= htmlspecialchars($avis['prenom']) ?> <?= str_repeat('⭐', (int)$avis['note']) ?></strong>
-            </div>
-          </div>
-        <?php endforeach; ?>
-      <?php endif; ?>
-    </div>
+    <div class="row" id="liste-avis"></div>
   </section>
 
   <!-- FOOTER -->
@@ -96,5 +75,6 @@ $avis_valides = $pdo->query("
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../js/avis.js"></script>
 </body>
 </html>
